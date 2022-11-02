@@ -14,6 +14,7 @@ const reportBotElem = document.getElementById('report-b');
 const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
+const resetButton = document.getElementById('catchphrase-reset-btn');
 
 // set state for how many times the user changes the head, middle, and bottom
 let headCount = 0;
@@ -67,6 +68,23 @@ catchphraseButton.addEventListener('click', () => {
     catchphraseInput.value = '';
     // update the dom to show the new catchphrases (refactor to/call displayCatchphrases to do this work)
     displayCatchphrases();
+});
+
+resetButton.addEventListener('click', () => {
+    let catchphrases = [];
+
+    catchphrasesEl.textContent = '';
+    headEl.style.backgroundImage = '';
+    middleEl.style.backgroundImage = '';
+    bottomEl.style.backgroundImage = '';
+
+    let headCount = 0;
+    let middleCount = 0;
+    let bottomCount = 0;
+
+    reportHeadElem.textContent = `You have updated the head ${headCount} times`;
+    reportMidElem.textContent = `You have updated the middle ${middleCount} times`;
+    reportBotElem.textContent = `You have updated the bottom ${bottomCount} times`;
 });
 
 function displayStats() {
