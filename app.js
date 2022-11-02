@@ -6,7 +6,10 @@ const bottomDropdown = document.getElementById("bottom-dropdown");
 const headEl = document.getElementById("head");
 const middleEl = document.getElementById("middle");
 const bottomEl = document.getElementById("bottom");
-const reportEl = document.getElementById("report");
+
+const reportHeadElem = document.getElementById("report-h");
+const reportMidElem = document.getElementById("report-m");
+const reportBotElem = document.getElementById("report-b");
 
 const catchphrasesEl = document.getElementById("catchphrases");
 const catchphraseInput = document.getElementById("catchphrase-input");
@@ -16,6 +19,7 @@ const catchphraseButton = document.getElementById("catchphrase-button");
 let headCount = 0;
 let middleCount = 0;
 let bottomCount = 0;
+displayStats();
 
 // set state for all of the character's catchphrases
 let catchPhrases = [];
@@ -39,6 +43,7 @@ middleDropdown.addEventListener("change", (e) => {
   // update the dom for the middle (NOTE: use style.backgroundImage on the middleEl div instead of trying to set the .src -- it's NOT an img tag!)
   middleEl.style.backgroundImage = `./assets/${value}.png`;
   // update the stats to show the new count (call displayStats() to do this work)
+  displayStats();
 });
 
 bottomDropdown.addEventListener("change", (e) => {
@@ -49,6 +54,7 @@ bottomDropdown.addEventListener("change", (e) => {
   // update the dom for the bottom (NOTE use style.backgroundImage on the bottomEl div instead of trying to set the .src -- it's NOT an img tag!)
   bottomEl.style.backgroundImage = `./assets/${value}.png`;
   // update the stats to show the new count (call displayStats() to do this work)
+  displayStats();
 });
 
 catchphraseButton.addEventListener("click", () => {
@@ -60,7 +66,9 @@ catchphraseButton.addEventListener("click", () => {
 
 function displayStats() {
   // text content of the reportEl to tell the user how many times they've changed each piece of the state
-  reportEl.textContent = `You have updated the head ${headCount} times`;
+  reportHeadElem.textContent = `You have updated the head ${headCount} times`;
+  reportMidElem.textContent = `You have updated the middle ${middleCount} times`;
+  reportBotElem.textContent = `You have updated the bottom ${bottomCount} times`;
 }
 
 function displayCatchphrases() {
